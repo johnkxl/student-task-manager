@@ -1,0 +1,77 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  min-height: 80vh;
+}
+
+/* Sidebar */
+.filter-sidebar {
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+}
+.nav-pills .nav-link {
+  color: #495057;
+  text-align: left;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.nav-pills .nav-link:hover {
+  background-color: #f1f3f5;
+}
+.nav-pills .nav-link.active {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+/* Chips */
+/* .course-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+.course-chip {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+.course-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.course-chip.disabled {
+  opacity: 0.6;
+  filter: grayscale(1);
+  text-decoration: line-through;
+} */
+
+/* Utils */
+.group-badge {
+  font-weight: 600;
+  color: #333;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.overdue {
+  color: #dc3545;
+  font-weight: bold;
+}
