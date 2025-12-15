@@ -23,6 +23,34 @@ dist-ssr
 *.sln
 *.sw?
 
-.env
 README.md
-/src/components/CourseChips.jsx
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules
+
+# Build Output
+dist
+dist-ssr
+
+# System Files
+.DS_Store
+.DS_Store?
+._*
+
+# Environment Variables (CRITICAL SECURITY)
+.env
+.env.local
+.env.*.local
+
+# Firebase
+.firebase/
+# Note: Keep firebase.json and .firebaserc
+
+# IDEs (Optional but recommended)
+.vscode/
+.idea/
