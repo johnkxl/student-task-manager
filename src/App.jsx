@@ -17,7 +17,7 @@ function App() {
     tasks, views, courses, loading, 
     addTask, updateTask, deleteTask, 
     addView, deleteView, 
-    addCourse, updateCourse, deleteCourse 
+    addCourse, updateCourse, handleDeleteCourse 
   } = useFirestore(user?.uid);
 
   // UI State
@@ -120,7 +120,7 @@ function App() {
               courses={courses.filter( c => c.viewId === activeViewId)}
               hiddenCourses={hiddenCourses}
               onToggle={toggleCourse}
-              onDelete={deleteCourse}
+              onDelete={handleDeleteCourse}
               onAdd={handleCreateCourse}
               handleColorChange={handleColorChange}
             />

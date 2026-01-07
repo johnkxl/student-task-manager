@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query } from 'firebase/firestore';
+import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query, writeBatch, where, getDocs } from 'firebase/firestore';
 import { db, currentAppId } from '../firebase';
 
 export function useFirestore(userId) {
@@ -40,7 +40,25 @@ export function useFirestore(userId) {
   
   const addCourse = (name, viewId) => addDoc(getCol('courses'), { name, viewId });
   const updateCourse = (id, updates) => updateDoc(doc(getCol('courses'), id), updates);
-  const deleteCourse = (id) => deleteDoc(doc(getCol('courses'), id));
 
-  return { ...data, loading, addTask, updateTask, deleteTask, addView, deleteView, addCourse, updateCourse, deleteCourse };
+  // Delete all associated tasks when deleting a course
+  const handleDeleteCourse = async (courseId) => {
+    const batch = writeBatch(db);
+
+    const taskRef = getCol('tasks');
+    const q = query(taskRef, where("courseId", "==", courseId));
+    const taskSnapshot = await getDocs(q);
+
+    // Queue up the tasks for deletion in the batch
+    taskSnapshot.forEach((taskDoc) => {
+      batch.delete(taskDoc.ref);
+    });
+
+    const courseRef = doc(getCol('courses'), courseId);
+    batch.delete(courseRef);
+
+    await batch.commit();
+  }
+
+  return { ...data, loading, addTask, updateTask, deleteTask, addView, deleteView, addCourse, updateCourse, handleDeleteCourse };
 }
